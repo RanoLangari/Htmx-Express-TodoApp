@@ -1,1 +1,1 @@
-simple TodoApp using express js. mysql, and HTMX
+simple TodoApp using Express js. Mysql, Tailwind CSS, and HTMX
