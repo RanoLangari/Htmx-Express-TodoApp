@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://unpkg.com/htmx.org@1.9.10"
+      integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Latihan HTMX</title>
+  </head>
+  <body>
+    <div class="flex items-center justify-center h-screen">
+      <div class="bg-white shadow-md rounded-lg p-6 w-96">
+        <h3 class="text-lg font-bold mb-2" id="notification"></h3>
+        <h1 class="text-2xl font-bold mb-4">Todo List</h1>
+        <input
+          type="text"
+          name="work"
+          class="w-full border-2 border-gray-200 p-2 rounded-md mb-4"
+          placeholder="Tambahkan Todo Baru"
+        />
+        <button
+          type="submit"
+          class="w-full bg-blue-500 text-white p-2 rounded-md"
+          hx-trigger="click"
+          hx-post="http://localhost:8000/data"
+          hx-include="[name=work]"
+          hx-target="#notification"
+          id="AddButton"
+        >
+          Add
+        </button>
+        <div class="mt-4">
+          <h2 class="text-lg font-bold mb-4">List of Todo</h2>
+          <ul
+            hx-get="http://localhost:8000/data"
+            hx-trigger="load, click from:#AddButton"
+          ></ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
